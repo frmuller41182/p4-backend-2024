@@ -1,0 +1,21 @@
+Ideas and things I want to accomplish in this graded assingment!!
+
+1. We will be doing a backend for the first time, so I will follow the example in class.
+2. El modelo de datos será literalmente el de la practica anterior asi que en mi caso será sobre la BBDD
+relacionada con el sector financiero.
+
+
+Hay que entregar 
+
+1. El código completo de servidor.
+2. Un fichero exportado de Thunder Client con la lista de endpoints que se han probado.
+3. Incluir en fichero ZIP el .env, pero no el gitbub repo.
+
+APIs que quiero poner:
+
+En la práctica que hicimos en clase había 5 APIs: 1/ Get all forums; 2/ Get a specific Forum; 
+3/ Post new forum; 4/ Put so update forum with a message.; and 5/ Delete a specific forum.
+
+
+
+1. 

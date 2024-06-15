@@ -12,3 +12,54 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  userId       Int           @id @default(autoincrement())
+  name         String
+  alias        String
+  email        String        @unique
+  createdAt    DateTime      @default(now())
+  transactions Transaction[]
+  portfolios   Portfolio[]
+}
+
+model Stock {
+  stockId      Int           @id @default(autoincrement())
+  symbol       String        @unique
+  companyName  String        @unique
+  industry     String
+  headQuarters String
+  numEmployees Int
+  currentPrice Float
+  transactions Transaction[]
+  portfolios   Portfolio[]   @relation("Portfolio@StocksManytoMany")
+  marketEvents MarketEvent[] @relation("Event@StockManytoMany")
+}
+
+model Transaction {
+  transactionId      Int      @id @default(autoincrement())
+  type               String
+  quantity           Int
+  priceAtTransaction Float
+  transactionDate    DateTime @default(now())
+  userId             Int
+  user               User     @relation(fields: [userId], references: [userId])
+  stockId            Int
+  stock              Stock    @relation(fields: [stockId], references: [stockId], onDelete: Cascade)
+}
+
+model Portfolio {
+  portfolioId Int      @id @default(autoincrement())
+  userId      Int
+  user        User     @relation(fields: [userId], references: [userId])
+  balance     Float
+  createdAt   DateTime @default(now())
+  stocks      Stock[]  @relation("Portfolio@StocksManytoMany")
+}
+
+model MarketEvent {
+  marketEventId  Int      @id @default(autoincrement())
+  eventName      String
+  affectedStocks Stock[]  @relation("Event@StockManytoMany")
+  eventDate      DateTime @default(now())
+}

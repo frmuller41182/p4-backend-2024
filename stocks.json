@@ -1,0 +1,482 @@
+[
+  {
+    "symbol": "PEP",
+    "companyName": "PepsiCo, Inc.",
+    "industry": "Food & Beverage",
+    "headQuarters": "US",
+    "numEmployees": "309000",
+    "currentPrice": 186.39
+  },
+  {
+    "symbol": "COST",
+    "companyName": "Costco Wholesale Corporation",
+    "industry": "Retail",
+    "headQuarters": "US",
+    "numEmployees": "304000",
+    "currentPrice": 523.48
+  },
+  {
+    "symbol": "INTC",
+    "companyName": "Intel Corporation",
+    "industry": "Semiconductors",
+    "headQuarters": "US",
+    "numEmployees": "121000",
+    "currentPrice": 30.39
+  },
+  {
+    "symbol": "CSCO",
+    "companyName": "Cisco Systems, Inc.",
+    "industry": "Networking & Communications",
+    "headQuarters": "US",
+    "numEmployees": "83300",
+    "currentPrice": 51.56
+  },
+  {
+    "symbol": "ADBE",
+    "companyName": "Adobe Inc.",
+    "industry": "Software",
+    "headQuarters": "US",
+    "numEmployees": "28973",
+    "currentPrice": 487.82
+  },
+  {
+    "symbol": "PYPL",
+    "companyName": "PayPal Holdings, Inc.",
+    "industry": "Financial Technology",
+    "headQuarters": "US",
+    "numEmployees": "30900",
+    "currentPrice": 77.56
+  },
+  {
+    "symbol": "BABA",
+    "companyName": "Alibaba Group Holding Limited",
+    "industry": "Internet Retail",
+    "headQuarters": "China",
+    "numEmployees": "245700",
+    "currentPrice": 94.37
+  },
+  {
+    "symbol": "SAP",
+    "companyName": "SAP SE",
+    "industry": "Software",
+    "headQuarters": "Germany",
+    "numEmployees": "111608",
+    "currentPrice": 117.92
+  },
+  {
+    "symbol": "TM",
+    "companyName": "Toyota Motor Corporation",
+    "industry": "Automotive",
+    "headQuarters": "Japan",
+    "numEmployees": "372817",
+    "currentPrice": 142.89
+  },
+  {
+    "symbol": "SBUX",
+    "companyName": "Starbucks Corporation",
+    "industry": "Restaurants",
+    "headQuarters": "US",
+    "numEmployees": "383000",
+    "currentPrice": 105.97
+  },
+  {
+    "symbol": "NKE",
+    "companyName": "Nike, Inc.",
+    "industry": "Apparel & Accessories",
+    "headQuarters": "US",
+    "numEmployees": "79100",
+    "currentPrice": 118.83
+  },
+  {
+    "symbol": "BMY",
+    "companyName": "Bristol-Myers Squibb Company",
+    "industry": "Pharmaceuticals",
+    "headQuarters": "US",
+    "numEmployees": "33000",
+    "currentPrice": 77.29
+  },
+  {
+    "symbol": "BA",
+    "companyName": "The Boeing Company",
+    "industry": "Aerospace & Defense",
+    "headQuarters": "US",
+    "numEmployees": "156000",
+    "currentPrice": 206.81
+  },
+  {
+    "symbol": "COP",
+    "companyName": "ConocoPhillips",
+    "industry": "Oil & Gas",
+    "headQuarters": "US",
+    "numEmployees": "9400",
+    "currentPrice": 105.44
+  },
+  {
+    "symbol": "QCOM",
+    "companyName": "QUALCOMM Incorporated",
+    "industry": "Semiconductors",
+    "headQuarters": "US",
+    "numEmployees": "51000",
+    "currentPrice": 117.47
+  },
+  {
+    "symbol": "AA",
+    "companyName": "Alcoa Corporation",
+    "industry": "Aluminum",
+    "headQuarters": "US",
+    "numEmployees": "13600",
+    "currentPrice": 35.14
+  },
+  {
+    "symbol": "AAPL",
+    "companyName": "Apple Inc.",
+    "industry": "Consumer Electronics",
+    "headQuarters": "US",
+    "numEmployees": "154000",
+    "currentPrice": 175.08
+  },
+  {
+    "symbol": "AMZN",
+    "companyName": "Amazon.com, Inc.",
+    "industry": "Internet Retail",
+    "headQuarters": "US",
+    "numEmployees": "1611000",
+    "currentPrice": 3475.79
+  },
+  {
+    "symbol": "MSFT",
+    "companyName": "Microsoft Corporation",
+    "industry": "Software",
+    "headQuarters": "US",
+    "numEmployees": "221000",
+    "currentPrice": 336.32
+  },
+  {
+    "symbol": "TSLA",
+    "companyName": "Tesla, Inc.",
+    "industry": "Automotive",
+    "headQuarters": "US",
+    "numEmployees": "99290",
+    "currentPrice": 1008.87
+  },
+  {
+    "symbol": "NVDA",
+    "companyName": "NVIDIA Corporation",
+    "industry": "Semiconductors",
+    "headQuarters": "US",
+    "numEmployees": "22473",
+    "currentPrice": 275.09
+  },
+  {
+    "symbol": "META",
+    "companyName": "Meta Platforms, Inc.",
+    "industry": "Internet Services",
+    "headQuarters": "US",
+    "numEmployees": "77805",
+    "currentPrice": 287.89
+  },
+  {
+    "symbol": "NFLX",
+    "companyName": "Netflix, Inc.",
+    "industry": "Entertainment",
+    "headQuarters": "US",
+    "numEmployees": "11300",
+    "currentPrice": 335.74
+  },
+  {
+    "symbol": "GOOGL",
+    "companyName": "Alphabet Inc. Class A",
+    "industry": "Internet Services",
+    "headQuarters": "US",
+    "numEmployees": "190000",
+    "currentPrice": 2380.68
+  },
+  {
+    "symbol": "JPM",
+    "companyName": "JPMorgan Chase & Co.",
+    "industry": "Banking",
+    "headQuarters": "US",
+    "numEmployees": "271025",
+    "currentPrice": 138.13
+  },
+  {
+    "symbol": "JNJ",
+    "companyName": "Johnson & Johnson",
+    "industry": "Pharmaceuticals",
+    "headQuarters": "US",
+    "numEmployees": "144000",
+    "currentPrice": 177.07
+  },
+  {
+    "symbol": "UNH",
+    "companyName": "UnitedHealth Group Incorporated",
+    "industry": "Health Care Plans",
+    "headQuarters": "US",
+    "numEmployees": "350000",
+    "currentPrice": 542.26
+  },
+  {
+    "symbol": "WMT",
+    "companyName": "Walmart Inc.",
+    "industry": "Retail",
+    "headQuarters": "US",
+    "numEmployees": "2300000",
+    "currentPrice": 153.28
+  },
+  {
+    "symbol": "PG",
+    "companyName": "Procter & Gamble Company",
+    "industry": "Consumer Products",
+    "headQuarters": "US",
+    "numEmployees": "105000",
+    "currentPrice": 156.62
+  },
+  {
+    "symbol": "DIS",
+    "companyName": "The Walt Disney Company",
+    "industry": "Entertainment",
+    "headQuarters": "US",
+    "numEmployees": "223000",
+    "currentPrice": 117.77
+  },
+  {
+    "symbol": "CRM",
+    "companyName": "Salesforce, Inc.",
+    "industry": "Software",
+    "headQuarters": "US",
+    "numEmployees": "73541",
+    "currentPrice": 211.63
+  },
+  {
+    "symbol": "HON",
+    "companyName": "Honeywell International Inc.",
+    "industry": "Industrial Conglomerates",
+    "headQuarters": "US",
+    "numEmployees": "97000",
+    "currentPrice": 214.52
+  },
+  {
+    "symbol": "IBM",
+    "companyName": "International Business Machines Corporation",
+    "industry": "IT Services",
+    "headQuarters": "US",
+    "numEmployees": "345900",
+    "currentPrice": 132.08
+  },
+  {
+    "symbol": "KO",
+    "companyName": "The Coca-Cola Company",
+    "industry": "Beverages",
+    "headQuarters": "US",
+    "numEmployees": "79000",
+    "currentPrice": 62.14
+  },
+  {
+    "symbol": "MCD",
+    "companyName": "McDonald's Corporation",
+    "industry": "Restaurants",
+    "headQuarters": "US",
+    "numEmployees": "200000",
+    "currentPrice": 292.25
+  },
+  {
+    "symbol": "MMM",
+    "companyName": "3M Company",
+    "industry": "Conglomerates",
+    "headQuarters": "US",
+    "numEmployees": "92000",
+    "currentPrice": 104.88
+  },
+  {
+    "symbol": "MRK",
+    "companyName": "Merck & Co., Inc.",
+    "industry": "Pharmaceuticals",
+    "headQuarters": "US",
+    "numEmployees": "68000",
+    "currentPrice": 115.07
+  },
+  {
+    "symbol": "ORCL",
+    "companyName": "Oracle Corporation",
+    "industry": "Software",
+    "headQuarters": "US",
+    "numEmployees": "143000",
+    "currentPrice": 96.49
+  },
+  {
+    "symbol": "PFE",
+    "companyName": "Pfizer Inc.",
+    "industry": "Pharmaceuticals",
+    "headQuarters": "US",
+    "numEmployees": "83000",
+    "currentPrice": 39.77
+  },
+  {
+    "symbol": "TMUS",
+    "companyName": "T-Mobile US, Inc.",
+    "industry": "Wireless Telecommunications",
+    "headQuarters": "US",
+    "numEmployees": "75000",
+    "currentPrice": 141.46
+  },
+  {
+    "symbol": "TXN",
+    "companyName": "Texas Instruments Incorporated",
+    "industry": "Semiconductors",
+    "headQuarters": "US",
+    "numEmployees": "31000",
+    "currentPrice": 177.94
+  },
+  {
+    "symbol": "UPS",
+    "companyName": "United Parcel Service, Inc.",
+    "industry": "Air Freight & Logistics",
+    "headQuarters": "US",
+    "numEmployees": "534000",
+    "currentPrice": 180.93
+  },
+  {
+    "symbol": "V",
+    "companyName": "Visa Inc.",
+    "industry": "Credit Services",
+    "headQuarters": "US",
+    "numEmployees": "26500",
+    "currentPrice": 229.64
+  },
+  {
+    "symbol": "VZ",
+    "companyName": "Verizon Communications Inc.",
+    "industry": "Telecommunications",
+    "headQuarters": "US",
+    "numEmployees": "118400",
+    "currentPrice": 37.18
+  },
+  {
+    "symbol": "WBA",
+    "companyName": "Walgreens Boots Alliance, Inc.",
+    "industry": "Drug Retail",
+    "headQuarters": "US",
+    "numEmployees": "200000",
+    "currentPrice": 33.39
+  },
+  {
+    "symbol": "WFC",
+    "companyName": "Wells Fargo & Company",
+    "industry": "Banking",
+    "headQuarters": "US",
+    "numEmployees": "249000",
+    "currentPrice": 43.21
+  },
+  {
+    "symbol": "LVMH",
+    "companyName": "LVMH Moët Hennessy Louis Vuitton SE",
+    "industry": "Luxury Goods",
+    "headQuarters": "France",
+    "numEmployees": "156000",
+    "currentPrice": 754.32
+  },
+  {
+    "symbol": "HSBC",
+    "companyName": "HSBC Holdings plc",
+    "industry": "Banking",
+    "headQuarters": "United Kingdom",
+    "numEmployees": "235000",
+    "currentPrice": 35.76
+  },
+  {
+    "symbol": "SNE",
+    "companyName": "Sony Group Corporation",
+    "industry": "Consumer Electronics",
+    "headQuarters": "Japan",
+    "numEmployees": "109700",
+    "currentPrice": 102.85
+  },
+  {
+    "symbol": "CVX",
+    "companyName": "Chevron Corporation",
+    "industry": "Oil & Gas",
+    "headQuarters": "US",
+    "numEmployees": "47736",
+    "currentPrice": 162.45
+  },
+  {
+    "symbol": "RY",
+    "companyName": "Royal Bank of Canada",
+    "industry": "Banking",
+    "headQuarters": "Canada",
+    "numEmployees": "86000",
+    "currentPrice": 112.34
+  },
+  {
+    "symbol": "SAN",
+    "companyName": "Banco Santander, S.A.",
+    "industry": "Banking",
+    "headQuarters": "Spain",
+    "numEmployees": "191189",
+    "currentPrice": 3.25
+  },
+  {
+    "symbol": "BIDU",
+    "companyName": "Baidu, Inc.",
+    "industry": "Internet Services",
+    "headQuarters": "China",
+    "numEmployees": "41000",
+    "currentPrice": 189.12
+  },
+  {
+    "symbol": "RELX",
+    "companyName": "RELX PLC",
+    "industry": "Information & Analytics",
+    "headQuarters": "United Kingdom",
+    "numEmployees": "33400",
+    "currentPrice": 29.97
+  },
+  {
+    "symbol": "ENEL",
+    "companyName": "Enel SpA",
+    "industry": "Utilities",
+    "headQuarters": "Italy",
+    "numEmployees": "66805",
+    "currentPrice": 6.91
+  },
+  {
+    "symbol": "ASML",
+    "companyName": "ASML Holding NV",
+    "industry": "Semiconductors",
+    "headQuarters": "Netherlands",
+    "numEmployees": "28331",
+    "currentPrice": 762.89
+  },
+  {
+    "symbol": "LULU",
+    "companyName": "Lululemon Athletica Inc.",
+    "industry": "Apparel",
+    "headQuarters": "Canada",
+    "numEmployees": "22000",
+    "currentPrice": 389.55
+  },
+  {
+    "symbol": "SHOP",
+    "companyName": "Shopify Inc.",
+    "industry": "E-commerce",
+    "headQuarters": "Canada",
+    "numEmployees": "7000",
+    "currentPrice": 688.45
+  },
+  {
+    "symbol": "ABNB",
+    "companyName": "Airbnb, Inc.",
+    "industry": "Hospitality",
+    "headQuarters": "US",
+    "numEmployees": "13800",
+    "currentPrice": 112.77
+  },
+  {
+    "symbol": "RIO",
+    "companyName": "Rio Tinto Group",
+    "industry": "Mining",
+    "headQuarters": "United Kingdom",
+    "numEmployees": "47436",
+    "currentPrice": 89.37
+  }
+]
