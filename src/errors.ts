@@ -29,6 +29,7 @@ export const defaultErrorHandler: ErrorRequestHandler = (
       return send(res).badRequest(zodErrorMessage(err));
     }
     default: {
+      console.log(err);
       return send(res).internalServerError(`Internal Error.`);
     }
   }
