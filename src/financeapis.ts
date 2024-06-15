@@ -2,7 +2,8 @@ import { Router } from "express";
 import { db } from "./db";
 import { send } from "./response";
 import { z } from "zod";
-import e from "cors";
+import { catchErrors } from "./errors";
+
 //import {catchErrors} from "./errors";
 
 /*
@@ -28,14 +29,13 @@ const bodySchema = z.object({
   name: z.string().min(5).max(200),
 });
 
-router.get("/", async (req, res, next) => {
-  try {
+router.get(
+  "/",
+  catchErrors(async (req, res) => {
     const forums = await db.user.findMany();
     send(res).ok(forums);
-  } catch (error) {
-    next(e);
-  }
-});
+  })
+);
 
 router.get("/:id", async (req, res, next) => {
   try {
