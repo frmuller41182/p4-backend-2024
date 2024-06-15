@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 
-import forumsRouter from "./forums";
+import router from "./financeapis";
 import { defaultErrorHandler } from "./errors";
 
 const app = express();
@@ -16,9 +16,7 @@ Si no, tu servidor se puede morir
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
-
-app.use("/forums", forumsRouter);
-
+app.use("/financeapis", router);
 app.use(defaultErrorHandler);
 
 const { PORT } = process.env;
