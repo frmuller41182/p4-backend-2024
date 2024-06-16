@@ -31,17 +31,36 @@ const bodySchema = z.object({
   email: z.string().email(),
 });
 
-// Get all Users.
+const stockBodySchema = z.object({
+  symbol: z.string().max(4),
+  companyName: z.string().min(4).max(30),
+  currentPrice: z.coerce.number().nonnegative().positive(),
+  industry: z.string().min(4).max(20),
+  headQuarters: z.string().min(4).max(20),
+  numEmployees: z.coerce.number(),
+});
+
+/*
+{
+        symbol: stock.symbol,
+        companyName: stock.companyName,
+        currentPrice: stock.currentPrice,
+        industry: stock.industry,
+        headQuarters: stock.headQuarters,
+        numEmployees: Number(stock.numEmployees),
+      },*/
+
+// 1. Get all Users.
 
 router.get(
   "/",
-  catchErrors(async (req, res) => {
+  catchErrors(async (_, res) => {
     const forums = await db.user.findMany();
     send(res).ok(forums);
   })
 );
 
-//Get one User
+// 2. Get one User
 
 router.get(
   "/user/:id",
@@ -54,7 +73,7 @@ router.get(
   })
 );
 
-// Create one User
+// 3. Create one User (POST)
 router.post(
   "/newUser/",
   catchErrors(async (req, res) => {
@@ -70,7 +89,7 @@ router.post(
   })
 );
 
-//Update one User
+// 4. Update one User (PUT)
 router.put(
   "/:id",
   catchErrors(async (req, res) => {
@@ -88,7 +107,7 @@ router.put(
   })
 );
 
-//Get value of a User's portfolios
+// 5. Get value of a User's portfolios
 
 router.get(
   "/UserPortfolioValue/:id",
@@ -120,7 +139,18 @@ router.get(
   })
 );
 
-//Delete one Transaction
+//6. Create one Stock
+
+router.post(
+  "/createStock",
+  catchErrors(async (req, res) => {
+    const stockData = stockBodySchema.parse(req.body);
+    const stockCreated = await db.stock.create({ data: stockData });
+    send(res).created(stockCreated);
+  })
+);
+
+// 7. Delete one Transaction
 router.delete(
   "/:id",
   catchErrors(async (req, res) => {
