@@ -3,8 +3,9 @@ import { db } from "./db";
 import { send } from "./response";
 import { z } from "zod";
 import { catchErrors } from "./errors";
-
-//import {catchErrors} from "./errors";
+import { bullMarket } from "../lib/bullMarket";
+import { marketCrash } from "../lib/marketCrash";
+import { acquisition } from "../lib/acquisition";
 
 /*
 Que tienen que hacer los endpoints?
@@ -40,15 +41,12 @@ const stockBodySchema = z.object({
   numEmployees: z.coerce.number(),
 });
 
-/*
-{
-        symbol: stock.symbol,
-        companyName: stock.companyName,
-        currentPrice: stock.currentPrice,
-        industry: stock.industry,
-        headQuarters: stock.headQuarters,
-        numEmployees: Number(stock.numEmployees),
-      },*/
+const getStocksQuerySchema = z.object({
+  industry: z.string().min(3).max(50).optional(),
+  event: z.string().optional(),
+  buySide: z.string().optional(),
+  sellSide: z.string().optional(),
+});
 
 // 1. Get all Users.
 
@@ -150,7 +148,20 @@ router.post(
   })
 );
 
-// 7. Delete one Transaction
+// 7. Get Stocks by Industry
+
+router.get(
+  "/stocks",
+  catchErrors(async (req, res) => {
+    const { industry } = getStocksQuerySchema.parse(req.query);
+    const stocks = await db.stock.findMany({
+      where: { industry: industry as string },
+    });
+    send(res).ok(stocks);
+  })
+);
+
+// 8. Delete one Transaction
 router.delete(
   "/:id",
   catchErrors(async (req, res) => {
@@ -159,6 +170,34 @@ router.delete(
       where: { transactionId: params.id },
     });
     send(res).ok(deltedUser);
+  })
+);
+
+//9. Market Manipulation API
+
+router.post(
+  "/marketManipulation",
+  catchErrors(async (req, res) => {
+    const { event } = getStocksQuerySchema.parse(req.query);
+    if (event === "Bull") {
+      await bullMarket();
+    } else if (event === "Bear") {
+      await marketCrash();
+    }
+    send(res).ok(`${event} market simulation complete!`);
+  })
+);
+
+//10. Acquisition Simulator (POST)
+
+router.post(
+  "/acquisition",
+  catchErrors(async (req, res) => {
+    const { buySide, sellSide } = getStocksQuerySchema.parse(req.query);
+    await acquisition(buySide as string, sellSide as string);
+    send(res).ok(
+      `The ${buySide} has successfully acquires ${sellSide}! Will the regulators allow it or will they ban it due to antitrust concerns?`
+    );
   })
 );
 
