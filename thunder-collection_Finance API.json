@@ -1,0 +1,177 @@
+{
+  "clientName": "Thunder Client",
+  "collectionName": "Finance API",
+  "collectionId": "fb9168d2-9530-4fec-86b0-95c5c5503d5c",
+  "dateExported": "2024-06-18T14:58:15.341Z",
+  "version": "1.2",
+  "folders": [],
+  "requests": [
+    {
+      "_id": "6dbd0363-c570-4350-a1e7-40c6eb4475f3",
+      "colId": "fb9168d2-9530-4fec-86b0-95c5c5503d5c",
+      "containerId": "",
+      "name": "Get All Users",
+      "url": "/users",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2024-06-15T16:12:05.827Z",
+      "modified": "2024-06-18T08:34:43.658Z",
+      "headers": []
+    },
+    {
+      "_id": "820515a4-4c85-4255-89a0-c65aea915d6f",
+      "colId": "fb9168d2-9530-4fec-86b0-95c5c5503d5c",
+      "containerId": "",
+      "name": "Get One User",
+      "url": "/users/504",
+      "method": "GET",
+      "sortNum": 15000,
+      "created": "2024-06-15T18:59:48.276Z",
+      "modified": "2024-06-18T08:35:25.550Z",
+      "headers": []
+    },
+    {
+      "_id": "7e3bee48-12ad-4ca0-8539-e7cd2dedeec8",
+      "colId": "fb9168d2-9530-4fec-86b0-95c5c5503d5c",
+      "containerId": "",
+      "name": "Create User",
+      "url": "/users/",
+      "method": "POST",
+      "sortNum": 17500,
+      "created": "2024-06-15T18:25:12.835Z",
+      "modified": "2024-06-18T08:39:17.786Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Maria\",\n  \"alias\":\"Meria\",\n  \"email\":\"mmeria@gmail.com\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "1a7e02ec-916e-40a1-b7b3-106efa38c304",
+      "colId": "fb9168d2-9530-4fec-86b0-95c5c5503d5c",
+      "containerId": "",
+      "name": "Update one User",
+      "url": "/users/520",
+      "method": "PUT",
+      "sortNum": 18125,
+      "created": "2024-06-16T16:08:40.293Z",
+      "modified": "2024-06-18T08:36:58.637Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n        \"name\": \"Mario\",\n        \"alias\": \"Balloteli\",\n        \"email\": \"mbalotellu@example.com\"\n  \n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "9c19cdcf-97d4-4ec3-a021-6485ef98654b",
+      "colId": "fb9168d2-9530-4fec-86b0-95c5c5503d5c",
+      "containerId": "",
+      "name": "Get User Portfolio Value",
+      "url": "/users/430/portfolio-value",
+      "method": "GET",
+      "sortNum": 18750,
+      "created": "2024-06-15T22:42:26.875Z",
+      "modified": "2024-06-18T08:38:22.490Z",
+      "headers": []
+    },
+    {
+      "_id": "d41584cb-efd7-476b-b824-3079d17db5b9",
+      "colId": "fb9168d2-9530-4fec-86b0-95c5c5503d5c",
+      "containerId": "",
+      "name": "Delete Transaction",
+      "url": "/users/422",
+      "method": "DELETE",
+      "sortNum": 20000,
+      "created": "2024-06-15T18:12:13.190Z",
+      "modified": "2024-06-18T08:48:03.105Z",
+      "headers": []
+    },
+    {
+      "_id": "5b2094ab-e805-439e-b174-99228d02fe5d",
+      "colId": "fb9168d2-9530-4fec-86b0-95c5c5503d5c",
+      "containerId": "",
+      "name": "List Stock",
+      "url": "/stocks/",
+      "method": "POST",
+      "sortNum": 60000,
+      "created": "2024-06-16T12:12:57.928Z",
+      "modified": "2024-06-18T08:40:43.186Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"symbol\": \"ECR\",\n  \"companyName\": \"Elaine Coin Registry\",\n  \"currentPrice\": 28.50,\n  \"industry\": \"Mining\",\n  \"headQuarters\": \"Okinawa\",\n  \"numEmployees\": 50\n}\n",
+        "form": []
+      }
+    },
+    {
+      "_id": "05946be5-d3c1-43ed-85af-54ff895d58c8",
+      "colId": "fb9168d2-9530-4fec-86b0-95c5c5503d5c",
+      "containerId": "",
+      "name": "Get Stocks by Industry",
+      "url": "/stocks?industry=Software",
+      "method": "GET",
+      "sortNum": 80000,
+      "created": "2024-06-17T13:26:29.029Z",
+      "modified": "2024-06-18T08:41:37.437Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "industry",
+          "value": "Software",
+          "isPath": false
+        }
+      ]
+    },
+    {
+      "_id": "dead1230-549e-4a2e-8211-b9ca2c9c9834",
+      "colId": "fb9168d2-9530-4fec-86b0-95c5c5503d5c",
+      "containerId": "",
+      "name": "Market Manipulation",
+      "url": "/market/manipulation?event=Bear",
+      "method": "POST",
+      "sortNum": 90000,
+      "created": "2024-06-17T18:47:15.244Z",
+      "modified": "2024-06-18T08:42:17.840Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "event",
+          "value": "Bear",
+          "isPath": false
+        }
+      ]
+    },
+    {
+      "_id": "33441dd5-6da2-4950-8469-4c3c8ef97c50",
+      "colId": "fb9168d2-9530-4fec-86b0-95c5c5503d5c",
+      "containerId": "",
+      "name": "Acquisition",
+      "url": "/market/acquisition?buySide=NFLX&sellSide=HSBC",
+      "method": "POST",
+      "sortNum": 100000,
+      "created": "2024-06-17T21:16:03.199Z",
+      "modified": "2024-06-18T14:47:19.381Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "buySide",
+          "value": "NFLX",
+          "isPath": false
+        },
+        {
+          "name": "sellSide",
+          "value": "HSBC",
+          "isPath": false
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "options": {
+      "baseUrl": "http://localhost:8888/financeapis"
+    }
+  },
+  "ref": "x5NjBSr53bXpXCEGhdMJmqWnFkz-mghm12JjaNouQzYyEagZ5hw6SacCcLXjQCrz0HO8G7bvjNmMqj1DJ0ugig"
+}
