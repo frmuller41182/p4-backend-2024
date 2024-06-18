@@ -51,7 +51,7 @@ const getStocksQuerySchema = z.object({
 // 1. Get all Users.
 
 router.get(
-  "/",
+  "/users",
   catchErrors(async (_, res) => {
     const forums = await db.user.findMany();
     send(res).ok(forums);
@@ -61,7 +61,7 @@ router.get(
 // 2. Get one User
 
 router.get(
-  "/user/:id",
+  "/users/:id",
   catchErrors(async (req, res) => {
     const params = paramsSchema.parse(req.params);
     const user = await db.user.findUnique({
@@ -73,7 +73,7 @@ router.get(
 
 // 3. Create one User (POST)
 router.post(
-  "/newUser/",
+  "/users/",
   catchErrors(async (req, res) => {
     const body = bodySchema.parse(req.body);
     const createdUser = await db.user.create({
@@ -83,13 +83,13 @@ router.post(
         email: body.email,
       },
     });
-    send(res).ok(createdUser);
+    send(res).created(createdUser);
   })
 );
 
 // 4. Update one User (PUT)
 router.put(
-  "/:id",
+  "/users/:id",
   catchErrors(async (req, res) => {
     const params = paramsSchema.parse(req.params);
     const body = bodySchema.parse(req.body);
@@ -105,10 +105,10 @@ router.put(
   })
 );
 
-// 5. Get value of a User's portfolios
+// 5. Get value of a User's portfolios (GET)
 
 router.get(
-  "/UserPortfolioValue/:id",
+  "/users/:id/portfolio-value",
   catchErrors(async (req, res) => {
     const params = paramsSchema.parse(req.params);
     const user = await db.user.findUnique({ where: { userId: params.id } });
@@ -137,10 +137,10 @@ router.get(
   })
 );
 
-//6. Create one Stock
+//6. Create one Stock (POST)
 
 router.post(
-  "/createStock",
+  "/stocks/",
   catchErrors(async (req, res) => {
     const stockData = stockBodySchema.parse(req.body);
     const stockCreated = await db.stock.create({ data: stockData });
@@ -151,7 +151,7 @@ router.post(
 // 7. Get Stocks by Industry
 
 router.get(
-  "/stocks",
+  "/stocks/",
   catchErrors(async (req, res) => {
     const { industry } = getStocksQuerySchema.parse(req.query);
     const stocks = await db.stock.findMany({
@@ -161,13 +161,19 @@ router.get(
   })
 );
 
-// 8. Delete one Transaction
+// 8. Delete one User
 router.delete(
-  "/:id",
+  "/users/:id",
   catchErrors(async (req, res) => {
     const params = paramsSchema.parse(req.params);
-    const deltedUser = await db.transaction.delete({
-      where: { transactionId: params.id },
+    await db.transaction.deleteMany({
+      where: { userId: params.id },
+    });
+    await db.portfolio.deleteMany({
+      where: { userId: params.id },
+    });
+    const deltedUser = await db.user.delete({
+      where: { userId: params.id },
     });
     send(res).ok(deltedUser);
   })
@@ -176,7 +182,7 @@ router.delete(
 //9. Market Manipulation API
 
 router.post(
-  "/marketManipulation",
+  "/market/manipulation",
   catchErrors(async (req, res) => {
     const { event } = getStocksQuerySchema.parse(req.query);
     if (event === "Bull") {
@@ -184,19 +190,19 @@ router.post(
     } else if (event === "Bear") {
       await marketCrash();
     }
-    send(res).ok(`${event} market simulation complete!`);
+    send(res).created(`${event} market simulation complete!`);
   })
 );
 
 //10. Acquisition Simulator (POST)
 
 router.post(
-  "/acquisition",
+  "/market/acquisition",
   catchErrors(async (req, res) => {
     const { buySide, sellSide } = getStocksQuerySchema.parse(req.query);
     await acquisition(buySide as string, sellSide as string);
-    send(res).ok(
-      `The ${buySide} has successfully acquires ${sellSide}! Will the regulators allow it or will they ban it due to antitrust concerns?`
+    send(res).created(
+      `The ${buySide} has successfully acquired ${sellSide}! Will the regulators allow it or will they ban it due to antitrust concerns?`
     );
   })
 );
