@@ -8,6 +8,7 @@ import { getRandomNumber } from "./getRandomNumber";
 export const financedb = new PrismaClient();
 
 export const bullMarket = async () => {
+  const logs: string[] = [];
   const numStocksAfected = getRandomNumber(5, 60);
   const stocks = await financedb.stock.findMany({ take: numStocksAfected });
   for (const stock of stocks) {
@@ -16,7 +17,11 @@ export const bullMarket = async () => {
       stock.currentPrice +
       stock.currentPrice * priceIncrease
     ).toFixed(2);
-    console.log(
+    await financedb.stock.update({
+      where: { stockId: stock.stockId },
+      data: { currentPrice: parseFloat(newPrice) },
+    });
+    logs.push(
       `Stock ${
         stock.symbol
       } has benefited from the bullish market rush!! Their share price rosed from ${stock.currentPrice.toFixed(
@@ -25,12 +30,8 @@ export const bullMarket = async () => {
         priceIncrease * 100
       ).toFixed(2)}%.`
     );
-    await financedb.stock.update({
-      where: { stockId: stock.stockId },
-      data: { currentPrice: parseFloat(newPrice) },
-    });
   }
-  console.log("Bull market simulation complete!");
+  logs.push("Bull market simulation complete!");
   await financedb.marketEvent.create({
     data: {
       eventName: "BullMarket",
@@ -39,4 +40,5 @@ export const bullMarket = async () => {
       },
     },
   });
+  return logs;
 };

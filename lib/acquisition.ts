@@ -17,20 +17,20 @@ the transactions of the acquired company will also be removed.
 const financedb = new PrismaClient();
 
 export const acquisition = async (buySide: string, sellSide: string) => {
+  const logs: string[] = [];
   const buySideCompany = await financedb.stock.findFirst({
     where: { symbol: buySide },
   });
   const sellSideCompany = await financedb.stock.findFirst({
     where: { symbol: sellSide },
   });
-  console.log(
-    `Well well well.... it seems like negotiations between ${buySideCompany?.companyName} and ${sellSideCompany?.companyName} reached a conclusion!!! ${buySideCompany?.companyName} will be buying ${sellSideCompany?.companyName}, will the regulators allow it or will they ban it due to antitrust concerns?`
-  );
-  console.log(
-    `The ${buySideCompany?.companyName} will now absorb ${Math.round(
-      sellSideCompany?.numEmployees! * 0.6
-    )} employees from the ${sellSideCompany?.companyName} company.`
-  );
+  const logMessage1 = `Well well well.... it seems like negotiations between ${buySideCompany?.companyName} and ${sellSideCompany?.companyName} reached a conclusion!!! ${buySideCompany?.companyName} will be buying ${sellSideCompany?.companyName}, will the regulators allow it or will they ban it due to antitrust concerns?`;
+  const logMessage2 = `The ${
+    buySideCompany?.companyName
+  } will now absorb ${Math.round(
+    sellSideCompany?.numEmployees! * 0.6
+  )} employees from the ${sellSideCompany?.companyName} company.`;
+  logs.push(logMessage1, logMessage2);
   await financedb.stock.update({
     where: { stockId: buySideCompany?.stockId! },
     data: {
@@ -54,9 +54,10 @@ export const acquisition = async (buySide: string, sellSide: string) => {
   await financedb.stock.delete({
     where: { stockId: sellSideCompany?.stockId },
   });
-  console.log(
+  logs.push(
     `${buySideCompany?.companyName} has acquired ${sellSideCompany?.companyName}!`
   );
+  return logs;
 };
 
 //Let's level it up! Allowing the users to parse the arguments they want when calling the scripts.

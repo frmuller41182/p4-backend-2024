@@ -8,6 +8,7 @@ import { getRandomNumber } from "./getRandomNumber";
 const financedb = new PrismaClient();
 
 export const marketCrash = async () => {
+  const logs: string[] = [];
   const stocks = await financedb.stock.findMany();
   for (const stock of stocks) {
     const priceDrop = getRandomNumber(0.3, 0.7);
@@ -15,7 +16,7 @@ export const marketCrash = async () => {
       stock.currentPrice -
       stock.currentPrice * priceDrop
     ).toFixed(2);
-    console.log(
+    logs.push(
       `Stock ${
         stock.symbol
       } has suffered from the market crash!! Their share price droped from ${stock.currentPrice.toFixed(
@@ -29,7 +30,7 @@ export const marketCrash = async () => {
       data: { currentPrice: parseFloat(newPrice) },
     });
   }
-  console.log("Market Crash simulation complete!");
+  logs.push("Market Crash simulation complete!");
   await financedb.marketEvent.create({
     data: {
       eventName: "Market Crash",
@@ -38,4 +39,5 @@ export const marketCrash = async () => {
       },
     },
   });
+  return logs;
 };

@@ -186,11 +186,12 @@ router.post(
   catchErrors(async (req, res) => {
     const { event } = getStocksQuerySchema.parse(req.query);
     if (event === "Bull") {
-      await bullMarket();
+      const logs = await bullMarket();
+      send(res).created(logs);
     } else if (event === "Bear") {
-      await marketCrash();
+      const logs = await marketCrash();
+      send(res).created(logs);
     }
-    send(res).created(`${event} market simulation complete!`);
   })
 );
 
@@ -200,10 +201,8 @@ router.post(
   "/market/acquisition",
   catchErrors(async (req, res) => {
     const { buySide, sellSide } = getStocksQuerySchema.parse(req.query);
-    await acquisition(buySide as string, sellSide as string);
-    send(res).created(
-      `The ${buySide} has successfully acquired ${sellSide}! Will the regulators allow it or will they ban it due to antitrust concerns?`
-    );
+    const logs = await acquisition(buySide as string, sellSide as string);
+    send(res).created(logs);
   })
 );
 
