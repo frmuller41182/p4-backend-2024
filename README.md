@@ -1,18 +1,92 @@
-# Backend en Typescript, Express y Prisma
+# Full Stack Web Development Project 4 - Finance App Backend
 
-Se trata de hacer un _backend_ usando Typescript, Express y Prisma. El _backend_ implementado en clase es el modelo a seguir. Para alumnos que lo hacen por primera vez y sienten algo de incomodidad, lo ideal es usar el modelo de guía y hacer un _backend_ cercano al original de tal manera que la práctica sea un repaso a fondo. Para los que estén más cómodos, lo ideal es innovar en algun aspecto y salirse parcialmente del modelo en ciertos momentos o explorar algún interés personal. El modelo de datos es directamente la práctica anterior.
+This project simulates the backend of a finance application, built using TypeScript, Prisma, Express JS, and a PostgreSQL database running on Docker. It encompasses various scenarios in the financial services industry, including acquisitions and market "manipulations". The application leverages Prisma as an ORM to efficiently interact with the PostgreSQL database.
 
-Al usar Prisma, es quizás buena idea explorar proveedores de Prisma que no sean precisamente Postgres, ya que el coste de hacerlo es mínimo (aunque esto no es obligatorio para nada). Aparte de los proveedores locales alternativos a Postgres, existen también opciones en la nube equivalentes a Postgres como [PlanetScale](https://www.prisma.io/docs/guides/database/planetscale), [CockroachDB](https://www.prisma.io/docs/guides/database/cockroachdb) o [Supabase](https://www.prisma.io/docs/guides/database/supabase), bien explicadas en la documentación de Prisma.
+## Features
 
-## Entregable
+- **Acquisitions:** Simulate company acquisitions where one company absorbs another, including employee transfers and stock price adjustments.
+- **Market Manipulations:** Simulate market events such as bull markets and market crashes.
+- **User Management:** Create, read, update, and delete user profiles.
+- **Stock Management:** Add and retrieve stock information.
+- **Portfolio Management:** Retrieve the total value of a user's portfolios.
+- **Transaction Management:** Manage financial transactions associated with users and stocks.
 
-Como anteriormente, para hacer esta práctica hay que:
-- Hacer un _fork_ de este repositorio.
-- Trabajar en el _fork_ haciendo commits regularmente (una práctica que aparece entera en un solo commit tendrá una nota muy baja o cero, hay que mostrar todo el proceso intermedio).
-- Al finalizar, se debe crear un `ZIP` del repositorio (que incluya el fichero `.env`!) y entregarlo en el [Campus Online de UPC School](https://talent.upc.edu) (habrá una tarea preparada para ello).
+## Getting Started
 
-El entregable es el código del proyecto, incluyendo:
-- `docker-compose.yml` si la base de datos corre bajo Docker.
-- El código completo del servidor.
-- Un fichero exportado de [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) con la lista de _endpoints_ que se han probado. (Esto es **extremadamente** relevante porque la corrección del backend, de no tener este fichero, es un trabajo muchísimo más tedioso!).
-- Si se necesitan credenciales para acceder a servicios de cloud (o incluso localmente), es importante incluir en el ZIP del campus el fichero `.env` con éstas. Es muy importante no subir ese fichero en GitHub (es decir, incluirlo en `.gitignore`).
+### 1. Install Dependencies
+
+First, clone the repository and install the necessary dependencies:
+
+```
+$ bun install
+```
+
+### 2. Set up Database
+
+Navigate to the directory containing the docker-compose.yml file and launch the Docker container:
+
+```
+$ cd docker
+$ docker-compose up -d
+$ cd ..
+```
+
+the `-d` flag runs the containers in the background, so you will be able to keep using the terminal.
+
+### 3. Configure Environment Variables
+
+Ensure your .env file is set up correctly in the root directory of the project. It should include the correct database connection string and PORT variable:
+
+```
+DATABASE_URL="postgresql://frank:frank1234@localhost:5432/financeDB"
+PORT = "8888"
+```
+
+Replace frank:frank1234 with your username and password if different, and financeDB with your database name as necessary. Also, you can change the PORT where the server will be listening. Otherwise, if you leave the default values in the `docker-compose.yml` file you can use the URL above.
+
+### 4. Set up Prisma
+
+Run the following commands to set up Prisma. These commands generate the Prisma client and push the schema to your database, creating any necessary tables.
+
+```
+$ bunx prisma generate
+$ bunx prisma db push
+```
+
+### 5. Seed the Database
+
+To populate your database with initial data:
+
+```
+$ bunx prisma db seed
+```
+
+This step executes the seeding script defined in the prisma/seed.ts, which should populate your database with the initial required data. We even used some APIs to make the seeding data as realistic as possible!
+
+### 6. Open Prisma Studio
+
+In order to explore the data generated in the previous step, and to observe the changes produced by the scripts, it is strongly recommended to open Prisma Studio. You may do so by executing the following command:
+
+```
+$ bunx prisma studio
+```
+
+You can then open Prisma Studio in you web browser with the output URL.
+
+### 7. Start the Application
+
+```
+$ bun dev
+```
+
+By running the command above you should be able to see a message that read `Finance App Backend listening on http://localhost:8888` (if you left the default PORT in the .env file). At this point, you can test the different APIs below!
+
+1. `POST /financeapis/market/acquisition?buySide=&sellSide=`: Simulate a company acquisition. `buySide` and `sellSide` query parameters should be the symbol of the two companies conducting the M&A operation (e.g., AMZN and GOOGL).
+2. `GET /financeapis/users`: Retrieve all users.
+3. `GET /financeapis/users/:id`: Retrieve a single user by ID.
+4. `POST /financeapis/users`: Create a new user.
+5. `PUT /financeapis/users/:id`: Update an existing user.
+6. `DELETE /financeapis/users/:id`: Delete a user and their associated transactions and portfolios.
+7. `POST /financeapis/market/manipulation?event=`: Simulate market events such as bull markets and crashes. The `event` query parameter should be either `Bear` or `Bull`.
+8. `POST /financeapis/stocks`: Create a new stock.
+9. `GET /financeapis/stock?industry=Software`: Retrieve stocks by industry. The `industry` query parameter should be one industry of the Stocks table.

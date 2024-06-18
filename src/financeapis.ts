@@ -53,8 +53,8 @@ const getStocksQuerySchema = z.object({
 router.get(
   "/users",
   catchErrors(async (_, res) => {
-    const forums = await db.user.findMany();
-    send(res).ok(forums);
+    const users = await db.user.findMany();
+    send(res).ok(users);
   })
 );
 

@@ -71,19 +71,3 @@ const getRandomStockSymbol = async () => {
   // Return the random object from the array
   return stocksRandom[randomIndex].symbol;
 };
-
-async function main() {
-  if (!buySide) {
-    buySide = await getRandomStockSymbol();
-  }
-  if (!sellSide) {
-    sellSide = await getRandomStockSymbol();
-  }
-  if (buySide && sellSide) {
-    await acquisition(buySide, sellSide).catch(console.error);
-  } else {
-    console.error("Invalid arguments");
-  }
-}
-
-await main();
